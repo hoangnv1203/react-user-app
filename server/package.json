@@ -1,0 +1,19 @@
+{
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "2.8.4",
+    "express": "4.16.2",
+    "express-http-proxy": "1.0.7",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.3",
+    "morgan": "^1.9.0",
+    "recursive-config": "1.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "3.0.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1"
+  }
+}

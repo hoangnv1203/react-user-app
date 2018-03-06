@@ -1,0 +1,32 @@
+{
+  "name": "react-user-app",
+  "version": "1.0.0",
+  "repository": "https://hoangnvit@bitbucket.org/makegoodlife/react-user-app.git",
+  "author": "hoangnv1203 <hoang.nong.nv@gmail.com>",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "concurrently": "3.5.0",
+    "nodemon": "1.12.1",
+    "webpack": "3.8.1"
+  },
+  "scripts": {
+    "install:all": "yarn install && yarn install:client && yarn install:server",
+    "install:client": "cd client/ && yarn && cd ..",
+    "install:server": "cd server/ && yarn && cd ..",
+    "dev": "concurrently \"yarn dev:client:watch\" \"yarn dev:server:run\"",
+    "dev:client:build": "cd client && webpack --config internals/webpack/webpack.dev.js && cd ..",
+    "dev:client:watch": "cd client && nodemon internals/dev-server --watch internals/dev-server --exec babel-node",
+    "dev:server:run": "cd server && nodemon index.js --watch . --exec babel-node --CONFIG=../config.dev.js",
+    "prod": "yarn prod:build && yarn prod:server:run",
+    "prod:build": "yarn prod:client:build",
+    "prod:client:build": "cd client && webpack --config internals/webpack/webpack.prod.js && cd ..",
+    "prod:client:now-build": "cd client && webpack --config internals/webpack/webpack.now.js && cd ..",
+    "prod:server:run": "NODE_ENV=production node server/index.js",
+    "client:clean": "rm -rf client/build",
+    "deploy:now": "yarn prod:client:now-build && now --public && rm -rf client/now-build",
+    "now-build": "yarn install:server",
+    "now-start": "NODE_ENV=production node server/index.js"
+  }
+}
